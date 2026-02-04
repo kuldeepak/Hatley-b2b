@@ -2,7 +2,7 @@
 
 client_id = "056de87f3086bdd61c779c79510401ef"
 name = "hatley-shipping-b2b"
-application_url = "https://combat-observations-merger-drinks.trycloudflare.com"
+application_url = "https://hatley-b2b.onrender.com"
 embedded = true
 
 [build]
@@ -25,7 +25,7 @@ api_version = "2026-04"
   uri = "/webhooks/orders/create"
 
   [app_proxy]
-  url = "https://combat-observations-merger-drinks.trycloudflare.com/proxy"
+  url = "https://hatley-b2b.onrender.com/proxy"
   prefix = "apps"          
   subpath = "proxy" 
 
@@ -34,4 +34,4 @@ scopes = "read_fulfillments,write_fulfillments,write_fulfillment_constraint_rule
 
 
 [auth]
-redirect_urls = [ "https://combat-observations-merger-drinks.trycloudflare.com/proxy/api/auth" ]
+redirect_urls = [ "https://hatley-b2b.onrender.com/proxy/api/auth" ]
