@@ -1,0 +1,105 @@
+{% schema %}
+{
+  "name": "Fulfillment Selector",
+  "target": "section",
+  "templates": ["cart"]
+}
+{% endschema %}
+<link rel="stylesheet" href="https://unpkg.com/@shopify/polaris@11.11.0/dist/polaris.css">
+<div class="Polaris-Card" style="margin: 20px 0;">
+  <div class="Polaris-Card__Section">
+    <h2 class="Polaris-Text--root Polaris-Text--headingMd">Choose Fulfillment Mode</h2>
+    <div style="margin-top: 15px;">
+      <label class="Polaris-Choice">
+        <input type="radio" name="fulfillment" value="immediate" class="Polaris-RadioButton__Input">
+        <span class="Polaris-Choice__Label">Immediate Shipping</span>
+      </label>
+      <label class="Polaris-Choice" style="margin-top: 10px; display: block;">
+        <input type="radio" name="fulfillment" value="booking" class="Polaris-RadioButton__Input">
+        <span class="Polaris-Choice__Label">Booking for Future Shipping</span>
+      </label>
+    </div>
+    <div id="date-wrapper" style="display: none; margin-top: 15px;">
+      <p class="Polaris-Text--root Polaris-Text--bodySm">Select Booking Date:</p>
+      <input type="date" id="booking-date" class="Polaris-TextField__Input" style="border:1px solid #ccc; padding:5px; border-radius:4px;">
+    </div>
+  </div>
+</div>
+<link rel="stylesheet" href="{{ 'date-block.css' | asset_url }}">
+<script>
+  (async function() {
+    console.log("🚀 Fulfillment Selector Loaded");
+    const radios = document.querySelectorAll('input[name="fulfillment"]');
+    const dateWrapper = document.getElementById('date-wrapper');
+    const dateInput = document.getElementById('booking-date');
+    console.log("📻 Radio buttons found:", radios.length);
+    console.log("🛒 Fetching cart...");
+    const cart = await fetch('/cart.js').then(res => res.json());
+    console.log("🛒 Cart attributes:", cart.attributes);
+    const savedMode = cart.attributes?.fulfillment_mode;
+    const savedDate = cart.attributes?.requested_fulfillment_date;
+    console.log("💾 Saved fulfillment_mode:", savedMode);
+    console.log("💾 Saved requested_fulfillment_date:", savedDate);
+    if (savedMode) {
+      radios.forEach(radio => {
+        radio.checked = radio.value === savedMode;
+        console.log(
+          `🔘 Radio [${radio.value}] checked =`,
+          radio.checked
+        );
+      });
+      dateWrapper.style.display =
+        savedMode === 'booking' ? 'block' : 'none';
+      console.log(
+        "📅 Date picker visible:",
+        savedMode === 'booking'
+      );
+    } else {
+      console.log("⚠️ No fulfillment_mode found in cart");
+    }
+    if (savedDate) {
+      dateInput.value = savedDate;
+      console.log("📅 Date input prefilled:", savedDate);
+    }
+    radios.forEach(radio => {
+      radio.addEventListener('change', async (e) => {
+        const mode = e.target.value;
+        console.log("🔄 User changed mode to:", mode);
+        let attributesUpdate = { fulfillment_mode: mode };
+        if (mode === 'immediate') {
+          dateWrapper.style.display = 'none';
+          dateInput.value = '';
+          attributesUpdate.requested_fulfillment_date = '';
+          console.log("✅ Immediate selected → date cleared");
+        } else {
+          dateWrapper.style.display = 'block';
+          console.log("⏳ Booking selected → waiting for date");
+        }
+        console.log("⬆️ Updating cart attributes:", attributesUpdate);
+        await fetch('/cart/update.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ attributes: attributesUpdate })
+        });
+        console.log("✅ Cart updated successfully");
+      });
+    });
+    dateInput.addEventListener('change', async (e) => {
+      const selectedDate = e.target.value;
+      console.log("📅 Date picker changed:", selectedDate);
+      if (!selectedDate) {
+        console.log("⚠️ Empty date, skipping update");
+        return;
+      }
+      await fetch('/cart/update.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          attributes: { requested_fulfillment_date: selectedDate }
+        })
+      });
+      console.log("✅ Date saved to cart");
+    });
+  })();
+</script>
+

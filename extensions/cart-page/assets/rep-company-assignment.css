@@ -1,0 +1,103 @@
+/* #rep-company-assignment {
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  background: #f9f9f9;
+}
+
+#rep-company-assignment select,
+#rep-company-assignment button {
+  margin-top: 5px;
+} */
+
+/* ===== Rep Company Assignment Wrapper ===== */
+#rep-company-assignment {
+  margin: 24px 0;
+  padding: 20px 22px;
+  background: #ffffff;
+  border: 1px solid #e1e3e5;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  max-width: 420px;
+}
+
+/* ===== Current Company Text ===== */
+#rep-company-assignment p {
+  margin: 0 0 14px 0;
+  font-size: 14px;
+  color: #202223;
+}
+
+#rep-company-assignment strong {
+  color: #008060;
+  font-weight: 600;
+}
+
+/* ===== Select Dropdown ===== */
+#company-selector {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #c9cccf;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#company-selector:focus {
+  outline: none;
+  border-color: #008060;
+  box-shadow: 0 0 0 2px rgba(0, 128, 96, 0.15);
+}
+
+/* ===== Assign Button ===== */
+#assign-btn {
+  margin-top: 14px;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #008060;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+#assign-btn:hover {
+  background-color: #006e52;
+  box-shadow: 0 6px 16px rgba(0, 128, 96, 0.25);
+  transform: translateY(-1px);
+}
+
+#assign-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(0, 128, 96, 0.2);
+}
+
+/* ===== Message Area ===== */
+#assign-msg {
+  margin-top: 12px;
+  font-size: 13px;
+  min-height: 18px;
+}
+
+/* Success / Error helpers (JS se text color set kar sakte ho) */
+#assign-msg.success {
+  color: #008060;
+  font-weight: 500;
+}
+
+#assign-msg.error {
+  color: #d72c0d;
+  font-weight: 500;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 640px) {
+  #rep-company-assignment {
+    padding: 16px;
+  }
+}

@@ -1,0 +1,7 @@
+name = "cart-page"
+type = "theme"
+uid = "6f92c6b6-82da-21bd-f859-a4e1c5bdf318cc5423d4"
+
+[access_scopes]
+scopes = "write_fulfillment_constraint_rules,read_orders,read_locations"
+

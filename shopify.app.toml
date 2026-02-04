@@ -1,0 +1,37 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "056de87f3086bdd61c779c79510401ef"
+name = "hatley-shipping-b2b"
+application_url = "https://combat-observations-merger-drinks.trycloudflare.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+
+[webhooks]
+api_version = "2026-04"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+  # Subscribe to order creation events
+  [[webhooks.subscriptions]]
+  topics = ["orders/create"]
+  uri = "/webhooks/orders/create"
+
+  [app_proxy]
+  url = "https://combat-observations-merger-drinks.trycloudflare.com/proxy"
+  prefix = "apps"          
+  subpath = "proxy" 
+
+[access_scopes]
+scopes = "read_fulfillments,write_fulfillments,write_fulfillment_constraint_rules,read_products,write_products,read_orders,write_orders,read_locations,read_companies,write_companies,write_customers,read_customers,read_inventory,customer_read_companies,customer_write_companies,customer_read_locations,customer_write_locations , write_app_proxy"
+
+
+[auth]
+redirect_urls = [ "https://combat-observations-merger-drinks.trycloudflare.com/proxy/api/auth" ]
