@@ -1,103 +1,98 @@
-/* #rep-company-assignment {
-  padding: 10px;
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
-  background: #f9f9f9;
-}
-
-#rep-company-assignment select,
-#rep-company-assignment button {
-  margin-top: 5px;
-} */
-
-/* ===== Rep Company Assignment Wrapper ===== */
+.Polaris-Card__Section,
 #rep-company-assignment {
-  margin: 24px 0;
-  padding: 20px 22px;
-  background: #ffffff;
-  border: 1px solid #e1e3e5;
-  border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-  max-width: 420px;
+  background: #F5F5F5;
+  border: 1px solid #E6E8EB;
+  border-radius: 14px;
+  padding: 20px;
+  max-width: 560px;
+  margin-bottom: 20px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
 }
 
-/* ===== Current Company Text ===== */
+h2.Polaris-Text--root {
+  margin-bottom: 14px;
+  font-size: 26px;
+  font-weight: 600;
+  color: #202223;
+}
+
+body label.Polaris-Choice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0px;
+    font-size: 16px;
+    color: #202223;
+    cursor: pointer;
+    margin-top: 5px ;
+}
+input.Polaris-RadioButton__Input {
+  accent-color: #202223;
+}
+
+#date-wrapper {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #F1F2F4;
+}
+
+input#booking-date {
+  height: 36px;
+  padding: 0 12px;
+  font-size: 17px;
+  color: #202223;
+
+  border: 1px solid #C9CCD1;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  max-width: 100%;
+
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+#date-wrapper p.Polaris-Text--root.Polaris-Text--bodySm {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 6px;
+}
+
 #rep-company-assignment p {
-  margin: 0 0 14px 0;
-  font-size: 14px;
-  color: #202223;
+    font-size: 18px;
+    color: #000;
+    margin-bottom: 12px;
 }
 
-#rep-company-assignment strong {
-  color: #008060;
-  font-weight: 600;
+select#company-selector {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #C9CCD1;
+    font-size: 17px;
+    background-color: #fff;
 }
 
-/* ===== Select Dropdown ===== */
-#company-selector {
-  width: 100%;
-  padding: 10px 12px;
-  font-size: 14px;
-  border-radius: 8px;
-  border: 1px solid #c9cccf;
-  background-color: #ffffff;
-  cursor: pointer;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+select#company-selector:focus {
+  outline: none;
+  border-color: #458FFF;
+  box-shadow: 0 0 0 2px rgba(69, 143, 255, 0.2);
 }
 
-#company-selector:focus {
-  outline: none;
-  border-color: #008060;
-  box-shadow: 0 0 0 2px rgba(0, 128, 96, 0.15);
+button#assign-btn {
+    background: #000;
+    color: #FFFFFF;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 500;
+    transition: background 0.2s ease;
+    margin-left: 10px;
+}
+button#assign-btn:hover {
+  background: #000000;
 }
 
-/* ===== Assign Button ===== */
-#assign-btn {
-  margin-top: 14px;
-  width: 100%;
-  padding: 12px 16px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #ffffff;
-  background-color: #008060;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-#assign-btn:hover {
-  background-color: #006e52;
-  box-shadow: 0 6px 16px rgba(0, 128, 96, 0.25);
-  transform: translateY(-1px);
-}
-
-#assign-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 3px 8px rgba(0, 128, 96, 0.2);
-}
-
-/* ===== Message Area ===== */
-#assign-msg {
-  margin-top: 12px;
-  font-size: 13px;
-  min-height: 18px;
-}
-
-/* Success / Error helpers (JS se text color set kar sakte ho) */
-#assign-msg.success {
-  color: #008060;
-  font-weight: 500;
-}
-
-#assign-msg.error {
-  color: #d72c0d;
-  font-weight: 500;
-}
-
-/* ===== Mobile ===== */
-@media (max-width: 640px) {
-  #rep-company-assignment {
-    padding: 16px;
-  }
+button#assign-btn:active {
+  transform: translateY(1px);
 }
